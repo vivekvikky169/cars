@@ -9,7 +9,7 @@ const adminRoute = require('./routes/admin')
 module.exports = function(app) {
     app.use(express.json());
     // app.use(rateLimiterRedisMiddleware);
-    app.use("/car", carRoute);
+    app.use("/car", carRoute); 
     app.use("/user", userRoute);
     app.use("/userReq", userRequestRoute);
     app.use("/admin", adminRoute);
