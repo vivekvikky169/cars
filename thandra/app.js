@@ -4,9 +4,9 @@ const express = require('express')
 
 const bodyParser = require('body-parser')
 
-const uuidv4 = require("uuid/v4");
+// const uuidv4 = require("uuid/v4");
 
-const redis = require('redis');
+// const redis = require('redis');
 
 const logger = require("./middleware/logger");
 
@@ -16,16 +16,16 @@ app.use(bodyParser())
 
 const port = process.env.PORT || 5000
 
-const client = redis.createClient({ host: 'localhost', port: 6379 });
+// const client = redis.createClient({ host: 'localhost', port: 6379 });
 
-const connects = async () => {
-    client.on('connect', () => {
-    // logger.info('redis client connected');
-    logger.info('redis connected')
-  });
-};
+// const connects = async () => {
+//     client.on('connect', () => {
+//     // logger.info('redis client connected');
+//     logger.info('redis connected')
+//   });
+// };
 
-connects();
+// connects();
 
 connect = async () => {
   mongoose
@@ -46,10 +46,10 @@ app.use((request, response, next) => {
   if (request.header("requestId")) {
     requestId = request.header("requestId");
   } else {
-    requestId = uuidv4();
+    // requestId = uuidv4();
   }
   response.setHeader("requestId", requestId);
-  // logger.info(`${request.method} ${request.url} [trace_id:${requestId}]`);
+  logger.info(`${request.method} ${request.url} [trace_id:${requestId}]`);
   next();
 });
 
@@ -69,7 +69,7 @@ app.patch("*", (request, response) => {
 
 app.use((request, response, err) => {
   response.status(404).send({ message: "Not found" });
-  // logger.error("error middleware", err);
+  logger.error("error middleware", err);
 });
 app.listen(port, () => {
   logger.info(`light it up on given port ${port}`)
