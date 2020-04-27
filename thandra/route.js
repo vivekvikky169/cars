@@ -4,7 +4,7 @@ const userRoute = require('./routes/user')
 const userRequestRoute = require('./routes/userRequest')
 const adminRoute = require('./routes/admin')
 // const rateLimiterRedisMiddleware = require('./middleware/rateLimiterRedis');
-
+//removed for redis issue
 
 module.exports = function(app) {
     app.use(express.json());
