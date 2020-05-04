@@ -4,10 +4,10 @@ module.exports = {
   addAdmin: async queryData => {
     try {
       const adminData = {
-        name: queryData.name,
-        email: queryData.email,
-        mobile: queryData.mobile,
-        password: queryData.password
+        name: body.name,
+        email: body.email,
+        mobile: body.mobile,
+        password: body.password
         // liscence:request.body.liscence
       }
       await adminRepository.create(adminData);
