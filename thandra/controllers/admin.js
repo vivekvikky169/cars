@@ -4,8 +4,8 @@ const adminService = require('../services/admin')
 module.exports = {
 
   addAdmin: async (request, response) => {
-    var queryData = url.parse(request.url, true).query;
-    if (!queryData.assetType)
+    // var queryData = url.parse(request.url, true).query;
+    if (!request.body.name || !request.body.mobile || !request.body.email || !request.body.password)
       return response
         .status(422)
         .json({ message: "Please provide All Fields" });
